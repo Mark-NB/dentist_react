@@ -1,3 +1,7 @@
+.appointment {
+  cursor: zoom-in;
+}
+
 .calendarview .header,
 .calendarview .table {
   display: grid;

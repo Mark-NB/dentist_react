@@ -1,6 +1,8 @@
 import React from "react";
-import "./Calendar.css";
+import "../styles/Calendar.css";
 import DayInMonth from "./DayInMonth";
+import AppointmentPopup from './AppointmentPopup'
+import { useSelector } from "react-redux";
 
 const divideByDay = appointments => {
   const appointmentsByDay = {};
@@ -15,6 +17,8 @@ const divideByDay = appointments => {
 };
 
 export default ({ appointments }) => {
+
+  const state = useSelector(state => state.dentalSchedule);
   const appointmentsByDay = divideByDay(appointments);
 
   const daysInMonthJSX = Object.values(
@@ -33,6 +37,7 @@ export default ({ appointments }) => {
         <div>Vrijdag</div>
       </div>
       <div className="table">{daysInMonthJSX}</div>
+      {state.popup.isActive ? <AppointmentPopup /> : ""}
     </div>
   );
 };
